@@ -1,41 +1,31 @@
 #include <stdio.h>
 
 /**
- * main - finds and prints the sum of the even-valued terms
- * in the Fibonacci sequence below 4,000,000
+ * main - Finds and prints the sum of the even-valued terms
+ * below 4,000,000 in the Fibonacci sequence, followed by a new line
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-    /* Initialize variables */
-	int i;
-	unsigned long int j, k, next, sum;
+    int i;
+    unsigned long int j, k, next, sum;
 
-	/* Initialize the first two numbers in the Fibonacci sequence */
-	j = 1;
-	k = 2;
-	/* Initialize the sum to zero */
-	sum = 0;
+    j = 1;
+    k = 2;
+    sum = 0;
 
-	/* Loop to find and sum even-valued Fibonacci terms below 4,000,000 */
-	for (i = 1; i <= 33; ++i)  /* 33 iterations are sufficient to reach 4,000,000 */
-	{
-		/* Check if the current Fibonacci term is even and below 4,000,000 */
-		if (j < 4000000 && (j % 2) == 0)
-		{
-			/* Add the even term to the sum */
-			sum = sum + j;
-		}
-		/* Calculate the next term in the Fibonacci sequence */
-		next = j + k;
-		/* Update j and k for the next iteration */
-		j = k;
-		k = next;
-	}
+    for (i = 1; i <= 33; ++i)  /* 33 iterations are sufficient to reach 4,000,000 */
+    {
+        if (j < 4000000 && (j % 2) == 0)
+        {
+            sum = sum + j;  /* Add even Fibonacci terms to sum */
+        }
+        next = j + k;  /* Calculate the next term in the Fibonacci sequence */
+        j = k;  /* Update j to the current value of k */
+        k = next;  /* Update k to the next value in the sequence */
+    }
 
-	/* Print the sum of even-valued Fibonacci terms */
-	printf("%lu\n", sum);
+    printf("%lu\n", sum);  /* Print the sum of even Fibonacci terms */
 
-	/* Return 0 to indicate successful completion */
-	return (0);
+    return (0);
 }
